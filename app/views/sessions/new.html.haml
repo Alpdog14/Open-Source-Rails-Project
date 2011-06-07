@@ -1,0 +1,41 @@
+- title "Log In"
+- active_tab "Login"
+
+- @login ||= Login.new
+
+- hide_login_panel
+
+#body
+  #body_left
+    #left_pad
+      - unless @login.error_message.blank?
+        .error= @login.error_message
+
+      .details.novmargin
+        %h2.form Log In with an Account
+        = partial "sessions/login_form"
+      .details
+        %h2.form Log In with OpenID
+        = partial "sessions/openid_form"
+      
+  #body_right
+    - right_box do
+      = clear
+      %h2= link_to "Sign Up Now", new_user_url
+      %p
+        It's fast and free. Regardless, all functionality works on the site even if you're unregistered.
+      %p
+        But if you want a more permanent solution, and prefer to get your name out there, signing up with an account can't hurt.
+    
+
+    #forgot_password
+      - right_box do
+        %h3 Forgot Password?
+        .mini-form
+          - form_tag forgot_password_url do
+            .field.text_field
+              %label Enter your Email Address:
+              = text_field_tag :email, "", :style => "width: 156px;margin:2px"
+              = submit_tag "Send Password", :style => "width: 94px;margin:0"
+          
+          

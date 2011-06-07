@@ -1,0 +1,62 @@
+- title "#{name_display(@user)} Profile"
+- active_tab :profile
+
+#body
+  #body_left.swap
+    #left_pad
+      = partial "projects/parts/grid", :projects => @bookmarked_projects, |
+                :grid_title => pluralize(@bookmarked_projects.size, "Bookmarked Project"), |
+                :empty_message => "No applications have been bookmarked yet." |
+      
+      = clear
+      
+  #body_right
+    - if current_or_anon_user == @user
+      - if @user.anonymous?
+        - right_box do
+          = br
+          %h2= link_to "Create an Account!", new_user_url
+          %p In order to save your bookmarks, and share your profile with others, sign up now!
+      - else
+        - right_box do
+          = partial "users/parts/about_user", :user => @user
+    - else
+      - right_box do
+        %h3
+          == #{name_display(@user)} Profile
+          = br
+          = link_to user_url(@user), user_url(@user)
+          
+        .display      
+          %p
+            %strong Name:
+            =h default(@user.name, "[Not Entered]")
+            - unless @user.homepage.blank?
+              = br
+              %strong Homepage:
+              = link_to h(@user.homepage), h(@user.homepage)
+
+            - unless @user.profile.blank?
+              = br
+              %strong About:
+              =h(@user.profile)
+    
+    - right_box do
+      %h3== #{name_display(@user)} Activities (#{@activities.size})
+      .scroll-300
+        = partial "projects/parts/activity_list", :activities => @activities
+
+    - right_box do
+      %h3== #{name_display(@user)} Ratings (#{@rated_projects.size})
+      .scroll-300
+        = partial "projects/parts/list", :projects => @rated_projects
+    
+    - right_box do
+      %h3== #{name_display(@user)} Submitted Projects (#{@submitted_projects.size})
+      - if @submitted_projects.empty?
+        %p
+          You have not yet submitted any projects.
+      - else
+        .scroll-300
+          = partial "projects/parts/list", :projects => @submitted_projects
+        

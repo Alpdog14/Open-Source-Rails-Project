@@ -1,0 +1,19 @@
+#header
+  %h1
+    %a.replace#logo{:href => root_url, :name => "logo", :title => AppConfig.site_name}
+      %span &nbsp;
+      = AppConfig.site_name
+
+  .address
+    = link_to image_tag("slogan.png"), "#", :class => "toggle", :rel => "#about_us"
+    
+  #menu
+    %ul
+      - if active_tab.is_a? String
+        %li= menu_item(active_tab, url_for, true)
+      %li= menu_item("Gallery (#{Project.gallery.count})", gallery_url, active_tab == :gallery)
+      %li= menu_item("Upcoming (#{Project.upcoming.count})", upcoming_projects_url, active_tab == :upcoming)
+      %li= menu_item("Profile", user_url(current_or_anon_user), active_tab == :profile)
+      
+    = clear
+  = partial "sessions/login_panel"

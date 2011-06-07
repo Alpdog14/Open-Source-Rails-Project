@@ -1,0 +1,34 @@
+- title "Sign Up"
+- active_tab "Sign Up"
+
+- hide_login_panel
+
+#body
+  #body_left
+    #left_pad
+      .main.details
+        %h2.form Create a User Account
+        - build_form_for @user, :url => users_url, :html => {:method => :post} do |f|
+  
+          = f.error_messages
+    
+          = f.text_field :login
+          = f.text_field :email
+          = f.password_field :password
+          = f.password_field :password_confirmation
+    
+          .actions
+            = f.submit
+            or
+            = link_to "cancel", root_url
+
+  #body_right
+    - right_box do
+      %h3 Already have an account?
+      .mini-form
+        = partial "sessions/login_form"
+    
+    - right_box do
+      %h3 Login with OpenID
+      .mini-form
+        = partial "sessions/openid_form"

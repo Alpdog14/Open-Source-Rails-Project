@@ -1,0 +1,32 @@
+#footer
+  .links
+    %strong LINKS:
+    = link_to "Gallery", root_url
+    |
+    = link_to "My Profile", user_url(current_or_anon_user)
+    |
+    = link_to "About", about_url
+    |
+    = link_to "Blog", blog_url
+    - if AppConfig.feedback_link
+      |
+      = link_to "Feedback", AppConfig.feedback_link
+    |
+    - if logged_in?
+      = link_to "Logout", session_url, :method => :delete, :confirm => "Are you sure you want to log out?"
+    - else
+      = link_to "Login", new_session_url
+  
+    .credits
+      == &copy; #{AppConfig.site_name}
+      by
+      = link_to("RailsJedi", "http://www.railsjedi.com")+","
+      = br
+      Logo by
+      = link_to("VivaLogo", "http://www.vivalogo.com/")
+      
+  .about
+    = partial("layouts/social_media") if AppConfig.show_social_media
+      
+  = clear  
+  

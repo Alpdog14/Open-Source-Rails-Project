@@ -1,0 +1,11 @@
+- unless @hide_login_panel
+  - if logged_in?
+    .login.current
+      Logged in as:
+      %strong= link_to current_user.login, user_url(current_user)
+  - else
+    .login
+      .links
+        = link_to "Login", new_session_url
+        | 
+        = link_to "Sign Up", new_user_url

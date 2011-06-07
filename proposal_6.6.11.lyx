@@ -1,0 +1,338 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+COMP 412: Open Source Programming Project Proposal
+\end_layout
+
+\begin_layout Author
+by Jay Wengrow, Chris Abplanalp & David Treering
+\end_layout
+
+\begin_layout Date
+Due June 6, 2011  
+\end_layout
+
+\begin_layout Section
+Abstract 
+\end_layout
+
+\begin_layout Standard
+One potentially excellent resouce for discovering new and exciting open
+ source projects created using Ruby on Rails is a website called Opensourcerails.
+com.
+ While the site is fully functional as is, it could be greatly improved
+ upon in several ways.
+ It currently lacks unit and integration tests, which naturally discourages
+ other developers to contribute to the project for fear that their additions
+ may break existing code.
+ It also is built using Rails version 2, while the latest version, Rails
+ 3, has been around for more than one year now and has made considerable
+ advances.
+ Opensourcerails.com also does not implement certain filter functionalities
+ which makes it easy for a user to quickly discover projects interesting
+ to him or her.
+ Lastly, the visual design could be upgraded to make the website seem more
+ current and professional, thereby encouraging more users to utilize it.
+ Our proposal is to make the above stated changes.
+\end_layout
+
+\begin_layout Section
+Executive Summary
+\end_layout
+
+\begin_layout Subsection
+Intellectual Merit
+\end_layout
+
+\begin_layout Standard
+Since the popularization of the Internet, the web has become a primary resource
+ in the sharing of free and open source software.
+ To get more developers to work on certain open source projects, there have
+ been various attempts at creating useful websites that showcase many different
+ open source projects available for further development and use.
+ There have been fewer websites that target specific evelopment languages
+ or platforms.
+ There seems to be only one website devoted to showcasing open source projects
+ developed using the Ruby on Rails web framework.
+ This site has been implemented and hosted by a Rails developer named Jacques
+ Crocker, and can be found at Opensourcerails.com.
+ This web application collects many Ruby on Rails projects and lets the
+ user search or browse them to either use them or further develop them.
+ There seems to have been no serious attempt, however, at upgrading this
+ site in recent years, and traffic to this site seems to have diminished.
+ This is unfortunate, since Opensourcerails.com may be the only website that
+ showcases Rails projects in this way.
+\end_layout
+
+\begin_layout Subsection
+Broader Impact
+\end_layout
+
+\begin_layout Standard
+The effect we are trying to leave on society is to have a functional way
+ to share Ruby on Rails applications that will allow users to quickly find
+ and understand an application to use or develop further.
+ This is an application of Loyola’s mission in that it is helping individuals
+ put forth their knowledge to service the community but also allow individuals
+ to further their knowledge by expanding the projects that have already
+ been developed.
+\end_layout
+
+\begin_layout Subsection
+Transformative Potential
+\end_layout
+
+\begin_layout Standard
+This project may have a significant impact on society, because it is an
+ excellent way to further the Open Source Movement.
+ By making this website more palatable from a development perspective, even
+ more developers may use this application to find relevant projects that
+ need further development.
+ It also is an excellent resource for non-developers to simply find great
+ software that is free to use.
+ Exposing the Ruby on Rails framework and applications to a wider audience
+ will increase the utility of this framework for developers everywhere.
+\end_layout
+
+\begin_layout Section
+Problem Statement and Related Work 
+\end_layout
+
+\begin_layout Standard
+The existing website, Opensourcerails.com, is a great resource, but is languishin
+g and not being widely used or improved upon.
+ As a gallery of free and open source software built using the Ruby on Rails
+ framework, this site should be the best place to find exciting, new open
+ source applications and uses of Rails.
+ However, as evidenced by the change logs and a brief review of the site,
+ this FOSS project has not been contributed to in more than two years.
+ The upgrade to the most current version of the Rails framework has not
+ yet been attempted.
+ In addition, there are no unit tests for developers who might be inclined
+ to contribute to this project.
+ In fact, there have been comments posted to the website asking when the
+ site will be upgraded to the latest version of Rails so people could be
+ more involved.
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+Opensourcerails.org would be a more interesting and capable service if it
+ had some added functionality besides simply listing FOSS Rails projects.
+ The ability to sort and filter (e.g.
+ by name, date or topic of the Rails projects) would make the site much
+ more useful for those trying to find particular functionality in an existing
+ project.
+ Tests are a critical way for developers who contribute to a FOSS project
+ to know if they are producing something that works with existing code,
+ or if their manipulations or edits have broken something.
+ By not having a test suite available, developers may be discouraged from
+ contributing to opensourcerails.org.
+ Research shows that one of the key obstacles for developers in contributing
+ to open source software is the lack of adequate documentation (Shibuya
+ & Tamai, 2009).
+ Good integration tests can serve as an important form of documentation,
+ as they spell out specifically what the application code must accomplish.
+ By creating a suite of unit tests for the website, we hope to make the
+ project more attractive to other Rails developers as well.
+ While the differences between the most recent version of Rails, Rails 2,
+ and the current version, Rails 3, are not drastic, a website that showcases
+ well done Rails web applications should itself be at the forefront of the
+ technology it professes to support.
+ Also, developers will be more inclined to build upon a site that utilizes
+ the latest technology, especially as Rails 3 is considerably easier to
+ use.
+ We will perform the necessary upgrades from Rails 2 to Rails 3 for the
+ entire site.
+ 
+\end_layout
+
+\begin_layout Section
+Milestones and Deliverables 
+\end_layout
+
+\begin_layout Standard
+As stated above, the milestones we are trying to reach for this project
+ are: 
+\end_layout
+
+\begin_layout Standard
+1) Upgrade from Rails 2 to Rails 3: Jay will be primary on this task.
+ 
+\end_layout
+
+\begin_layout Standard
+2) Create test suite with unit tests: David will be primary on this task.
+ 
+\end_layout
+
+\begin_layout Standard
+3) Add more advanced sort/filter features: All will work on this task.
+ 
+\end_layout
+
+\begin_layout Standard
+4) Upgrade website design layout: Chris will be primary on this task.
+ 
+\end_layout
+
+\begin_layout Section
+Timeline, Technical Approach, and Project Management 
+\end_layout
+
+\begin_layout Standard
+One major obstacle we will face is the time available to develop this project.
+ We have about two weeks to rebuild the application and revitalize its design.
+ Week one will include the creation of the website’s structure via semantic
+ HTML for all the pages plus the identifying of all the website’s current
+ functionality that we must replicate.
+ Week two will involve the writing of the integration tests, as we will
+ write the tests prior to the actual development, in accordance with the
+ Agile practice of Test Driven Development.
+ While TDD may increase the time needed to complete a project, research
+ shows that it significantly improves the quality of the software (Bhat
+ & Nagappan, 2006).
+ Week three will aim to cause all the integration tests to pass by building
+ the actual application using the Ruby on Rails framework.
+ This will include several functionalities that are not yet existent in
+ the currently operating website.
+ The new design can be created in parallel during week two, and will be
+ complete by the end of the project.
+ The aesthetics of web design becomes important for a users return/accessibility
+ (Mbipom, 2009).
+ The single advantage to the tight deadline is that we can use the 30 day
+ trial of Basecamp as our project management system.
+ 
+\end_layout
+
+\begin_layout Section
+Evaluation of Outcome 
+\end_layout
+
+\begin_layout Standard
+As our project includes the creation of a comprehensive test suite for every
+ aspect of the website’s functionality, the primary means of evaluating
+ the project’s success is to have all the tests pass.
+ In addition, we will seek review from our peers to determine if the website
+ is indeed easy to use and a project that they may be inclined to help contribut
+e towards.
+ 
+\end_layout
+
+\begin_layout Section
+Dissemination Plan 
+\end_layout
+
+\begin_layout Standard
+We are developing our application off a fork from an existing project and
+ will submit a “Pull” request to the original author to incorporate our
+ changes for distribution via GitHub.
+ The target audience we are focusing on are the whole web community interested
+ in Free and Open Source Ruby on Rails application.
+ We hope to make the experience about learning or developing applications
+ easier than the current web application.
+ 
+\end_layout
+
+\begin_layout Section
+Citations 
+\end_layout
+
+\begin_layout Standard
+Thirumalesh Bhat and Nachiappan Nagappan.
+ 2006.
+ Evaluating the efficacy of test-driven development: industrial case studies.
+ In Proceedings of the 2006 ACM/IEEE international symposium on Empirical
+ software engineering (ISESE '06).
+ ACM, New York, NY, USA, 356-363.
+\end_layout
+
+\begin_layout Standard
+Michael Hartl.
+ 2010.
+ Ruby on Rails 3 Tutorial: Learn Rails by Example (1st ed.).
+ Addison-Wesley Professional.
+\end_layout
+
+\begin_layout Standard
+Bianca Shibuya and Tetsuo Tamai.
+ 2009.
+ Understanding the process of participating in open source communities.
+ In Proceedings of the 2009 ICSE Workshop on Emerging Trends in Free/Libre/Open
+ Source Software Research and Development (FLOSS '09).
+ IEEE Computer Society, Washington, DC, USA, 1-6.
+\end_layout
+
+\begin_layout Standard
+Grace Mbipom.
+ 2009.
+ Good visual aesthetics equals good web accessibility.
+ SIGACCESS Access.
+ Comput.
+ 93 (January 2009), 75-83.
+\end_layout
+
+\end_body
+\end_document

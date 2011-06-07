@@ -1,0 +1,96 @@
+- active_tab :about
+
+#body.about
+  #body_left
+    #left_pad
+      - if @preview
+        = partial "pages/tell_friend_preview"
+      - else
+        .details.main
+          %h2.right== Latest #{AppConfig.version}
+          %h2.left== About #{AppConfig.site_name}
+          = clear
+          .entry{:style => "color:#666"}
+            %p
+              = br
+              Open Source Rails features an easy to browse gallery of the best open source / freely available rails projects.
+              
+            %p
+              Each project features screenshots plus community driven comments, ratings, and bookmarking. 
+            
+            %p
+              If you have a Rails project that you're considering to release to the community, please let us know
+              and we'll help you get featured, and hopefully build up a community to help build and extend your project.
+          
+            %p{:style => "margin-bottom: 0"}
+              Keep up to date with OpenSourceRails.com:
+          
+            %ul{:style => "margin-bottom: 20px"}
+              %li= link_to "Featured Projects RSS Feed", projects_rss
+              %li= link_to "Upcoming Projects RSS Feed", upcoming_rss
+              - if AppConfig.blog_rss
+                %li= link_to "Latest Blog RSS Feed", AppConfig.blog_rss
+          
+            %p 
+              Got a feature idea? Find a bug? 
+              = mail_to AppConfig.admin_email_address, "Email", :encode => "javascript"
+              us.
+          
+  #body_right
+    = partial "layouts/about_us", :force_show => true
+    #about_tabs
+      - tabs(:class => "size-3") do
+        - tab "Promote", "spread_tab" do
+          %p{:style => "margin-top: 0px;margin-bottom: 10px"} Let a friend know about Open Source Rails!
+          = partial "pages/tell_friend_form"
+          
+        - tab "Credits", "credits_tab" do
+          %p{:style => "margin-bottom: 0px"} Open Source Rails uses the following freely available design components.
+          %ul
+            %li
+              Vector Icons by
+              = link_to "LiquidCity", "http://www.gosquared.com/liquidicity"
+            %li
+              Crystal Icons by
+              = link_to "Everaldo", "http://www.everaldo.com/crystal/"
+            %li
+              Javascript Lightbox Effect 
+              = br+"by"
+              = link_to "Nick Stakenburg", "http://www.nickstakenburg.com"
+
+        - tab "Plugins", "plugins_tab" do
+          %p{:style => "margin-bottom: 0px"} Open Source Rails proudly uses and abuses the following Rails plugins:
+          %ul
+            %li
+              = link_to "AttachmentFu", "http://svn.techno-weenie.net/projects/plugins/attachment_fu/"
+              by
+              = link_to "Rick Olson", "http://techno-weenie.net/"
+            %li
+              = link_to "Acts as Taggable on Steroids", "http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids/"
+              = br+"by"
+              = link_to "Jonathan Viney", "http://www.workingwithrails.com/person/4985-jonathan-viney"
+            %li
+              = link_to "Haml", "http://haml.hamptoncatlin.com/"
+              by
+              = link_to "Hampton Catlin", "http://www.workingwithrails.com/person/4737-hampton-catlin"
+              = br+"and"
+              = link_to "Nathan Weizenbaum", "http://nex-3.com/"
+            %li
+              = link_to "Will Paginate", "http://github.com/mislav/will_paginate/wikis"
+              by
+              = link_to "Err", "http://errtheblog.com/"
+              = br+"and"
+              = link_to "Mislav Marohnić", "http://mislav.caboo.se/"
+          %p Thanks!
+            
+      .credits
+        %h2 Developed and Hosted by:
+        #ads
+          %ul
+            %li= link_to_image("yoda_dude.png", "http://www.railsjedi.com", :label => "RailsJedi")
+            = clear
+
+
+  = clear
+  
+  

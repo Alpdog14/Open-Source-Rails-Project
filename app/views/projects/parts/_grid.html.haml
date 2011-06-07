@@ -1,0 +1,33 @@
+#project_grid
+  - if local_assigns[:projects]
+
+    - if !@grid_title.blank?
+      %h3
+        - if @grid_rss
+          .rss= link_to image_tag("rss-reflection-sm.png", :size => "20x20"), @grid_rss
+        = @grid_title
+    - else
+      = search_or_tag_title
+    
+
+    -# Display projects
+    - reset_cycle
+    .projects= partial projects
+  
+    - if projects.empty?
+      %p.empty
+        - if params[:q].blank?
+          = local_assigns[:empty_message] || "No applications currently exist in the gallery"
+          = br*2
+        
+      
+    -# display paging
+    = clear
+    .loading.right{hidden}= image_tag("loading.gif", :alt => "Loading...")
+    - if paging?(projects)
+      - unless AppConfig.ajax_paging
+        #disable_ajax_paging &nbsp;
+    
+      .grid-paging
+        .note.hidden Use left / right keys<br />to cycle pages
+        = paging(projects)

@@ -1,0 +1,49 @@
+- tabs(:class => "size-2") do
+  - if @hide_upcoming
+    - tab "Gallery", "gallery_apps", :class => "scroll-250" do
+      - if Project.gallery.size > 0
+        = partial "projects/parts/list", :projects => Project.gallery, :action => ["View All Gallery Projects", projects_url]
+      - else
+        %p No gallery applications. Submit one now!
+
+  - else
+    - tab "Upcoming", "upcoming_apps", :class => "scroll-250" do
+      - if Project.upcoming.size > 0
+        = partial "projects/parts/list", :projects => Project.upcoming, :action => ["View All Upcoming Projects", upcoming_projects_url]
+      - else
+        %p No upcoming applications. Submit one now!
+
+  - if @my_projects
+    - tab "Bookmarked", "projects_add", :class => "scroll-250" do
+      #my_bookmarks= partial "bookmarks/bookmark_list", :projects => @my_projects, :action => ["View All Bookmarks", user_url(current_or_anon_user)]
+  - else
+    - blank_tab
+
+- if @latest_activities and @tags and @top_downloaded
+  - tabs(:class => "size-3") do
+    - tab "Recent", "recent_activity", :class => "scroll-200" do
+      = partial "projects/parts/activity_list", :activities => @latest_activities  
+  
+    - tab "Tag Cloud", "tagcloud" do
+      .tags
+        - tag_cloud @tags, %w(level-1 level-2 level-3) do |tag, css_class|
+          %span{:class => css_class, :title => "#{tag.count} projects"}
+            = display_tag(tag)
+
+    - tab "Top Apps", "top_counts" do
+      .counts.first
+        %strong Top Downloaded
+        %ul
+          - @top_downloaded.each do |project|
+            %li
+              = link_to project.title, project
+              %span.stat= pluralize(project.downloads, "download")
+      
+      .counts
+        %strong Top Bookmarked
+        %ul
+          - @top_bookmarked.each do |project|
+            %li
+              = link_to project.title, project
+              %span.stat== Bookmarked by #{pluralize(project.bookmarks_count, "person")}
+

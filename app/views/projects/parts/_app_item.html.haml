@@ -1,0 +1,32 @@
+#app_item
+  -# show app item header
+  #app_item_top
+    #app_item_top_left
+      %h2= project.title
+      %h3= project.short_description
+      
+    -# slideshow link
+    #app_item_top_right
+      = link_to "<span>&nbsp;</span>View Slideshow", "#slideshow", :class => "replace", :id => "view_slideshow_link"
+    = clear
+  
+  -# show default screenshot
+  #app_item_image
+    = link_to image_tag(project.screenshot_url), project.screenshot_url, :id => "main_screenshot"
+  
+  -# show ratings and bookmarks
+  #app_item_links
+    #app_item_links_left
+      = partial "projects/parts/ratings", :project => project
+    #app_item_links_right
+      %ul
+        %li= bookmark_control(project)
+    = clear
+  
+  -# show tags
+  - if project.tag_list.size > 0
+    #app_item_tags
+      %strong Tags:
+      = project_tags(project)
+  - else
+    = br
